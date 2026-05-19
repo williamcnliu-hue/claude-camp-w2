@@ -12,6 +12,30 @@
 | `word_counter.py` | 文本词频统计器 | 字符串处理、字典统计、排序、lambda |
 | `todo_list.py` | 待办事项清单（带文件保存） | 函数定义、JSON 文件读写、try/except FileNotFoundError |
 | `safe_calculator.py` | 安全计算器 | try/except 实战、ValueError、ZeroDivisionError、Exception 兜底 |
+---
+
+## 🪞 W2 额外学习：魔法打败魔法工作流
+
+完成练习 1 后没有直接 commit，而是让 Claude 给自己的代码做了 Code Review，
+按 Review 改出 v2，再用**双屏 Terminal 对照测试** v1 vs v2。
+
+**工作流**：写代码 → AI Code Review → 改出 v2 → 双屏对照测试 → commit
+
+业内称：**Adversarial Collaboration（对抗式协作）**。这个方法不限于代码——
+房源描述、客户提案、月度报表 都能用：让一个 AI 写，让另一个 AI 挑刺。
+
+---
+
+## 📊 v1 → v2 重构对比
+
+| 测试场景 | `student_roster.py` (v1) | `student_roster_v2.py` (v2) |
+|---------|--------------------------|----------------------------|
+| 正常添加 | ✅ 添加成功 | ✅ 添加成功（一致）|
+| 重复添加同名学员 | ❌ 又加一次（bug）| ✅ 拒绝并提示 |
+| 查看全部列表 | 显示 **2 个张三** | 显示 **1 个张三** |
+| 空姓名 / 错误邮箱 | ❌ 接受了 | ✅ 拒绝并提示 |
+
+**五大改进点**：输入 `.strip()` 清洗 / 字典 key 用英文 / 重名检查 / 输入校验 / 函数拆分。
 
 ---
 
